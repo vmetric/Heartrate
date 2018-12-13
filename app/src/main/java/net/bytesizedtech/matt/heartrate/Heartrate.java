@@ -42,7 +42,7 @@ public class Heartrate extends AppCompatActivity implements SensorEventListener 
 
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_HEART_RATE) {
-            String msg = " Value sensor: " + (int)event.values[0];
+            String msg = "Sensor reporting value: " + (int)event.values[0];
             display.setText(msg);
         }
     }
@@ -51,26 +51,4 @@ public class Heartrate extends AppCompatActivity implements SensorEventListener 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         System.out.println("onAccuracyChanged - accuracy: " + accuracy);
     }
-//    public void onRequestPermissionsResult(int requestCode,
-//                                           String permissions[], int[] grantResults) {
-//        switch (requestCode) {
-//            case permReq: {
-//                final TextView display = findViewById(R.id.textView);
-//
-//                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//
-//                    display.setText("Yay!");
-//
-//                } else {
-//
-//                    display.setText("Aww!");
-//
-//                }
-//                return;
-//            }
-//
-//            // other 'switch' lines to check for other
-//            // permissions this app might request
-//        }
-//    }
 }
