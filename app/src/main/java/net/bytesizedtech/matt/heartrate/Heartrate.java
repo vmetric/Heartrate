@@ -29,8 +29,7 @@ public class Heartrate extends AppCompatActivity implements SensorEventListener 
         }
 
         SensorManager sensorManager = (SensorManager)this.getSystemService(SENSOR_SERVICE);
-        Sensor heartRate = null;
-        heartRate = sensorManager.getDefaultSensor(Sensor.TYPE_HEART_RATE);
+        Sensor heartRate = sensorManager.getDefaultSensor(Sensor.TYPE_HEART_RATE);
         if (heartRate != null) {
             display.setText("Sensor loaded");
         } else {
@@ -41,10 +40,11 @@ public class Heartrate extends AppCompatActivity implements SensorEventListener 
     }
 
     public void onSensorChanged(SensorEvent event) {
-        if (event.sensor.getType() == Sensor.TYPE_HEART_RATE) {
-            String msg = "Sensor reporting value: " + (int)event.values[0];
-            display.setText(msg);
-        }
+        display.setText(Float.toString(event.values.length > 0 ? event.values[0] : 0.0f));
+//        if (event.sensor.getType() == Sensor.TYPE_HEART_RATE) {
+//            String msg = "Sensor reporting value: " + (int)event.values[0];
+//            display.setText(msg);
+//        }
     }
 
 
