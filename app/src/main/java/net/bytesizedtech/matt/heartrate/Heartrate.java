@@ -13,15 +13,15 @@ import android.widget.TextView;
 
 public class Heartrate extends AppCompatActivity implements SensorEventListener {
     final int bodySensCode = 0;
-
-    final TextView display = findViewById(R.id.textView);
-
+    public TextView display;
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heartrate);
+
+        display = findViewById(R.id.textView);
 
 
         if (checkSelfPermission(Manifest.permission.BODY_SENSORS) == PackageManager.PERMISSION_DENIED) {
@@ -37,7 +37,7 @@ public class Heartrate extends AppCompatActivity implements SensorEventListener 
             display.setText("Sensor not loaded");
         }
 
-        sensorManager.registerListener(this, heartRate, SensorManager.SENSOR_DELAY_FASTEST);
+        sensorManager.registerListener(this, heartRate, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     public void onSensorChanged(SensorEvent event) {
@@ -50,5 +50,6 @@ public class Heartrate extends AppCompatActivity implements SensorEventListener 
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         System.out.println("onAccuracyChanged - accuracy: " + accuracy);
+        display.setText("onAccuracyChanged - accuracy: " + accuracy);
     }
 }
